@@ -8,7 +8,7 @@ terraform {
   }
 }
 
-# Configure the AWS Provider with Stockholm region
+# Configure the AWS Provider with chosen region
 provider "aws" {
-  region = "eu-north-1"
+  region = var.aws_region
 }
