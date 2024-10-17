@@ -12,7 +12,7 @@ This repository contains Terraform configurations for setting up an Amazon S3 bu
 
 **Access Keys**: Generates access keys for the IAM user for authentication.
 
-**IAM Policy**: Creates an IAM policy (`s3-backup-policy`) that allows the backup role to list, get, put, and delete objects in the S3 bucket.
+**IAM Policy**: Creates an IAM policy (`s3-backup-policy`) that allows the backup role to put objects in the S3 bucket.
 
 **Policy Attachment**: Attaches the `s3-backup-policy` to the backup role.
 
@@ -34,6 +34,13 @@ This repository contains Terraform configurations for setting up an Amazon S3 bu
 
 **HTTPS-Only Enforcement**: Adds a bucket policy that denies requests made over HTTP, ensuring that data is only accessed securely over HTTPS.
 
+**S3 Versioning**: Enables versioning for the S3 bucket, allowing you to retain previous versions of objects in case of accidental deletion or modification.
+
+**Lifecycle Management**: Configures lifecycle rules to:
+
+	- Transition objects to Glacier after 60 days.
+	- Transition noncurrent (older) versions of objects to Glacier after 30 days and expire them after 120 days.
+	- Abort incomplete multipart uploads after 7 days.
 
 ## Prerequisites
 
@@ -46,7 +53,7 @@ This repository contains Terraform configurations for setting up an Amazon S3 bu
 **Clone the Repository**:
 
 ```
-git clone <repository-url>
+git clone https://github.com/Anon5234/Joplin_Backup_S3.git
 cd s3_backup_setup
 ```
 
@@ -80,9 +87,17 @@ terraform apply
 
 **HTTPS Enforcement**: This setup enforces HTTPS for accessing the S3 bucket, which helps in protecting data in transit.
 
+**Versioning and Lifecycle Management**: With versioning enabled, older versions of objects are retained, and lifecycle rules are applied to manage object storage costs effectively (e.g., by transitioning data to Glacier).
+
 ## Notes
 
 **Bucket Name**: The bucket name `joplin-backup-bucket` is globally unique. You may need to change it if there's a conflict.
 
 **Environment-Specific Changes**: Adjust the AWS region in providers.tf if you need the resources in a different region.
+
+##  Contributing
+Feel free to open issues or submit pull requests to improve this script!
+
+## License
+This project is licensed under the MIT License.
 
