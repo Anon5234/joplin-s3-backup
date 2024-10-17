@@ -9,6 +9,7 @@
 # Ignore Terraform plan output
 tfplan
 
-# Ignore outputs file
+# Ignore outputs and variables files
 outputs.tf
+variables.tf
 

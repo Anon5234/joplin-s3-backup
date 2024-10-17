@@ -18,7 +18,7 @@ This repository contains Terraform configurations for setting up an Amazon S3 bu
 
 2. providers.tf
 
-**AWS Provider Setup**: Specifies the AWS provider version (~> 5.0) and configures the provider to use the eu-north-1 (Stockholm) region.
+**AWS Provider Setup**: Specifies the AWS provider version (~> 5.0) and configures the provider to use the region referenced in variables.tf.
 
 3. s3.tf
 
